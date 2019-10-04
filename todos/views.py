@@ -26,6 +26,12 @@ def create(request):
         content=content, 
         due_date=due_date
         )
-    return redirect('/todos')
+    return redirect('/todos/')
+
+
+def delete(request, id):
+    todo = Todo.objects.get(id=id)
+    todo.delete()
+    return redirect('/todos/')
     
 
