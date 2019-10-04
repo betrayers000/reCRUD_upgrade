@@ -4,5 +4,6 @@
   {% for todo in todos %}
     <h5>{{todo.author}} : {{todo.title}} -- {{todo.due_date}}</h5>
     <a href="{% url 'todos:delete' todo.id %}">삭제</a>
+    <a href="{% url 'todos:update' todo.id %}">수정</a>
   {% endfor %}
 {% endblock %}

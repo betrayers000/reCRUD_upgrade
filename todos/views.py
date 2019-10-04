@@ -50,3 +50,22 @@ def add(request):
         return redirect('todos:index')
     else:
         return render(request, 'add.html')
+
+def update(request, id):
+    todo = Todo.objects.get(id=id)
+    if request.method == "POST":
+        title = request.POST.get("title")
+        author = request.POST.get("author")
+        content = request.POST.get("content")
+        due_date = request.POST.get("due-date")
+        todo.title = title
+        todo.author = author
+        todo.content = content
+        todo.due_date = due_date
+        todo.save()
+        return redirect('todos:index')
+    else:
+        context = {
+            'todo':todo,
+        }
+        return render(request, 'update.html', context)

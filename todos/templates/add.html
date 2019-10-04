@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block body %}
-  <h1>NewPage</h1>
+  <h1>AddPage</h1>
   <form action="" method="POST">
     {% csrf_token %}
     작성자 : <input type="text" name="author">
     제목 : <input type="text" name="title">
-    내용 : <input type="text" name="content">
+    <br><br>
+    내용 : <textarea name="content" cols="30" rows="3"></textarea>
+    <br>
     마감일 : <input type="date" name="due-date">
     <input type="submit" vlaue="저장">
   </form>
