@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block body %}
   <h1>IndexPage</h1>
-  <a href="/todos/new/">일정추가</a>
   {% for todo in todos %}
     <h5>{{todo.author}} : {{todo.title}} -- {{todo.due_date}}</h5>
-    <a href="/todos/{{todo.id}}/delete/">삭제</a>
+    <a href="{% url 'todos:delete' todo.id %}">삭제</a>
   {% endfor %}
 {% endblock %}
