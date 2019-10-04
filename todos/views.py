@@ -34,4 +34,19 @@ def delete(request, id):
     todo.delete()
     return redirect('todos:index')
     
-
+def add(request):
+    if request.method == "POST":
+        author = request.POST.get("author")
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        due_date = request.POST.get("due-date")
+    
+        todo = Todo.objects.create(
+            author=author, 
+            title=title, 
+            content=content, 
+            due_date=due_date
+            )
+        return redirect('todos:index')
+    else:
+        return render(request, 'add.html')
